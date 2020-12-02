@@ -16,7 +16,6 @@ import { Switch, Route, BrowserRouter as Router } from 'react-router-dom';
 // import Lexbot from './Lexbot';
 // import CustomerProfile from './CustomerProfile';
 // import ChatPopper from './ChatPopper';
-
 // Amplify.configure(awsconfig);
 
 import Dashboard from './Components/Dashboard';
@@ -36,7 +35,9 @@ function App() {
     //     </Container>
     //   </div>
     // </Router>
-    <Dashboard />
+    <>
+      <Dashboard />
+    </>
   );
 }
 export default App

@@ -8,7 +8,7 @@ import Grid from '@material-ui/core/Grid';
 export default function Manager(props) {
   return (
     <div className="mainContainerWrap">
-      <Grid container  spacing={2}>
+      <Grid container spacing={2}>
         <Grid item xs={12} md={4}>
           <Card>
             <CardContent>
@@ -17,7 +17,7 @@ export default function Manager(props) {
             <CardActions>
               <Button size="small">Learn More</Button>
             </CardActions>
-          </Card>    
+          </Card>
         </Grid>
 
         <Grid item xs={12} md={4}>
@@ -28,7 +28,7 @@ export default function Manager(props) {
             <CardActions>
               <Button size="small">Learn More</Button>
             </CardActions>
-          </Card>    
+          </Card>
         </Grid>
 
         <Grid item xs={12} md={4}>
@@ -39,9 +39,9 @@ export default function Manager(props) {
             <CardActions>
               <Button size="small">Learn More</Button>
             </CardActions>
-          </Card>    
+          </Card>
         </Grid>
       </Grid>
-  </div>
+    </div>
   );
 }
