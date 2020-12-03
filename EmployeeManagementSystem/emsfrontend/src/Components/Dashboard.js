@@ -16,7 +16,7 @@ import NotificationsIcon from '@material-ui/icons/Notifications';
 import { mainListItems } from './listItems';
 import { Route, BrowserRouter as Router } from 'react-router-dom';
 
-import Employees from './Employees';
+import Employee from './Employee';
 import Home from './Home';
 import HR from './HR';
 import Manager from './Manager';
@@ -150,9 +150,11 @@ export default function Dashboard() {
 
         <main className={classes.content}>
           <Route exact path="/" component={() => <Home />} />
-          <Route exact path="/employees" component={() => <Employees />} />
-          <Route exact path="/hr" component={() => <HR />} />
-          <Route exact path="/manager" component={() => <Manager />} />
+          <Route exact path="/employee" component={() => <Employee />} />
+          {/* <Route exact path="/department" component={() => <Department />} />
+          <Route exact path="/salary" component={() => <Salary />} />
+          <Route exact path="/profile" component={() => <Profile />} />
+          <Route exact path="/leave" component={() => <Leave />} /> */}
         </main>
       </div>
     </Router>

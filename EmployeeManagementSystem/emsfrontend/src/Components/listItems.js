@@ -23,28 +23,52 @@ export const mainListItems = (
         <ListItemText primary="Dashboard" />
       </ListItem>
     </Link>
-    <Link to="/employees" style={{ textDecoration: 'none', display: 'block', color: "inherit" }} >
+    <Link to="/employee" style={{ textDecoration: 'none', display: 'block', color: "inherit" }} >
       <ListItem button>
         <ListItemIcon>
           <PeopleIcon />
         </ListItemIcon>
-        <ListItemText primary="Employees" />
+        <ListItemText primary="View Employee" />
       </ListItem>
     </Link>
-    <Link to="/hr" style={{ textDecoration: 'none', display: 'block', color: "inherit" }} >
+    <Link to="/department" style={{ textDecoration: 'none', display: 'block', color: "inherit" }} >
       <ListItem button>
         <ListItemIcon>
           <LayersIcon />
         </ListItemIcon>
-        <ListItemText primary="HR" />
+        <ListItemText primary="Department" />
       </ListItem>
     </Link>
-    <Link to="/manager" style={{ textDecoration: 'none', display: 'block', color: "inherit" }} >
+    <Link to="/salary" style={{ textDecoration: 'none', display: 'block', color: "inherit" }} >
       <ListItem button>
         <ListItemIcon>
           <PersonIcon />
         </ListItemIcon>
-        <ListItemText primary="Manager" />
+        <ListItemText primary="Salary" />
+      </ListItem>
+    </Link>
+    <Link to="/profile" style={{ textDecoration: 'none', display: 'block', color: "inherit" }} >
+      <ListItem button>
+        <ListItemIcon>
+          <PersonIcon />
+        </ListItemIcon>
+        <ListItemText primary="My Profile" />
+      </ListItem>
+    </Link>
+    <Link to="/leave" style={{ textDecoration: 'none', display: 'block', color: "inherit" }} >
+      <ListItem button>
+        <ListItemIcon>
+          <PersonIcon />
+        </ListItemIcon>
+        <ListItemText primary="Leave" />
+      </ListItem>
+    </Link>
+    <Link to="/logout" style={{ textDecoration: 'none', display: 'block', color: "inherit" }} >
+      <ListItem button>
+        <ListItemIcon>
+          <PersonIcon />
+        </ListItemIcon>
+        <ListItemText primary="Logout" />
       </ListItem>
     </Link>
   </div>
