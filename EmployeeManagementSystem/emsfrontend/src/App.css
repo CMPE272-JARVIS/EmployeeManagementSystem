@@ -34,6 +34,9 @@
 .makeStyles-content-12 {
   overflow-x: hidden;
 }
+.MuiDataGrid-root .MuiDataGrid-window {
+  overflow-x: hidden !important;
+}
 
 @keyframes App-logo-spin {
   from {
