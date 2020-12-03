@@ -59,7 +59,7 @@ public class Salaries implements Serializable {
     return this.fromdate;
   }
 
-  public void setFromdate(Date fromdate) {
+  public void setFromdate(String fromdate) {
     this.fromdate = fromdate;
   }
 
@@ -67,7 +67,7 @@ public class Salaries implements Serializable {
     return this.toDate;
   }
 
-  public void setToDate(Date toDate) {
+  public void setToDate(String toDate) {
     this.toDate = toDate;
   }
 

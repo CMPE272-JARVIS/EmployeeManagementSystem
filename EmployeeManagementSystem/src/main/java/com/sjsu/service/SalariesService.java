@@ -25,4 +25,22 @@ public class SalariesService {
     return sal;
   }
 
+  public List<Salaries> getAllEmpSalaries() {
+    List<Salaries> sal = repo.findAll();
+    return sal;
+  }
+
+  public List<Salaries> getAllSalaries(Integer pageNo, Integer pageSize, String sortBy) {
+
+    Pageable paging = PageRequest.of(pageNo, pageSize, Sort.by(sortBy));
+
+    Page<Salaries> pagedResult = repo.findAll(paging);
+
+    if (pagedResult.hasContent()) {
+      return pagedResult.getContent();
+    } else {
+      return new ArrayList<Salaries>();
+    }
+  }
+
 }

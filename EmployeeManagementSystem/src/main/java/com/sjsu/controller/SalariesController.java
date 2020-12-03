@@ -27,4 +27,19 @@ public class SalariesController {
     List<Salaries> sal = salService.getEmpSalaries(id);
     return sal;
   }
+
+  @GetMapping("/getAllEmpSal")
+  public List<Salaries> getAllEmpSalary() {
+    List<Salaries> sal = salService.getAllEmpSalaries();
+    return sal;
+  }
+
+  @GetMapping("/getSalariesPage")
+  public ResponseEntity<List<Salaries>> getAllSalaries(@RequestParam(defaultValue = "0") Integer pageNo,
+      @RequestParam(defaultValue = "15") Integer pageSize, @RequestParam(defaultValue = "empNumberFk") String sortBy) {
+    List<Salaries> list = salService.getAllSalaries(pageNo, pageSize, sortBy);
+
+    return new ResponseEntity<List<Salaries>>(list, new HttpHeaders(), HttpStatus.OK);
+  }
+
 }

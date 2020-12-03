@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import SearchIcon from '@material-ui/icons/Search';
@@ -36,6 +36,16 @@ export const Employee = (props) => {
         </Button>
       ),
     },
+    {
+      field: 'salaryDetails',
+      headerName: 'Salary Details',
+      width: 150,
+      renderCell: (params) => (
+        <Button color="primary" variant="contained" size="small" onClick={() => handleClickOpen(params.row)}>
+          View Salary Details
+        </Button>
+      ),
+    },
   ];
 
   const [employeeDetails, setEmployeeDetails] = React.useState([]);
@@ -48,7 +58,7 @@ export const Employee = (props) => {
   const handleClickOpen = (details) => {
     setOpen(true);
     if (details.empNumberPk)
-    setRowDetails(details);
+      setRowDetails(details);
   };
   const handleClose = () => {
     setOpen(false);
@@ -60,10 +70,10 @@ export const Employee = (props) => {
       console.log("GetCustomerBookingInfo", response.bookingInfo);
       setEmployeeDetails(response);
     })
-    .catch(function (error) {
-      console.log('GetCustomerBookingInfo error', error);
-      setEmployeeDetails([]);
-    });
+      .catch(function (error) {
+        console.log('GetCustomerBookingInfo error', error);
+        setEmployeeDetails([]);
+      });
   }, [page]);
 
   const handlePageChange = (params) => {
@@ -71,7 +81,7 @@ export const Employee = (props) => {
   };
 
   const onSearch = (id) => {
-    alert("search"+ id);
+    alert("search" + id);
   };
 
   return (
@@ -79,14 +89,14 @@ export const Employee = (props) => {
       <div className="gridOperations">
         <div>
           <TextField
-              label='Seach Employee'
-              // className={classes.textField}
-              value={empId}
-              onChange={(event) => setEmpId(event.target.value)}
-              InputLabelProps={{
-                  style: { color: '#7c7979', fontSize: '1.2em' },
-                  shrink: true
-              }}
+            label='Seach Employee'
+            // className={classes.textField}
+            value={empId}
+            onChange={(event) => setEmpId(event.target.value)}
+            InputLabelProps={{
+              style: { color: '#7c7979', fontSize: '1.2em' },
+              shrink: true
+            }}
           />
           <IconButton color="primary" aria-label="upload picture" component="span" onClick={() => onSearch(empId)}>
             <SearchIcon />
@@ -96,7 +106,7 @@ export const Employee = (props) => {
           Add New Employee
         </Button>
       </div>
-      
+
       <div style={{ height: 400, width: '100%', marginTop: '30px' }}>
         <CommonGrid
           rows={employeeDetails}
@@ -104,8 +114,8 @@ export const Employee = (props) => {
           handlePageChange={handlePageChange}
         />
       </div>
-      <AddEdit rowDetails={rowDetails} open={open} handleClose={handleClose}/>
-  </div>
+      <AddEdit rowDetails={rowDetails} open={open} handleClose={handleClose} />
+    </div>
   );
 }
 
