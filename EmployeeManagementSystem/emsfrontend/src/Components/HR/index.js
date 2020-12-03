@@ -45,7 +45,7 @@ export default function HR(props) {
       <Grid item xs={12} md={3}>
         <Card>
           <CardContent>
-            <h1>Recruitement and Section</h1>
+            <h1>Recruitement and Selection</h1>
           </CardContent>
           <CardActions>
             <Button size="small">Learn More</Button>
