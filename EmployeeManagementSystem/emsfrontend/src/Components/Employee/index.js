@@ -1,5 +1,4 @@
 import React, {useEffect} from 'react';
-import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import SearchIcon from '@material-ui/icons/Search';
@@ -7,6 +6,7 @@ import IconButton from '@material-ui/core/IconButton';
 
 import GetEmployees from './GetEmployees';
 import CommonGrid from '../CommonGrid';
+import AddEdit from './AddEdit';
 
 export const Employee = (props) => {
   const columns = [
@@ -25,30 +25,49 @@ export const Employee = (props) => {
       field: 'hireDate',
       headerName: 'Hire Date',
       width: 120,
-    }
+    },
+    {
+      field: 'edit',
+      headerName: 'Edit',
+      width: 150,
+      renderCell: (params) => (
+        <Button color="primary" variant="contained" size="small" onClick={() => handleClickOpen(params.row)}>
+          Edit
+        </Button>
+      ),
+    },
   ];
 
   const [employeeDetails, setEmployeeDetails] = React.useState([]);
   const [page, setPage] = React.useState(1);
   const [empId, setEmpId] = React.useState("");
+  const [open, setOpen] = React.useState(false);
+
+  const [rowDetails, setRowDetails] = React.useState({});
+
+  const handleClickOpen = (details) => {
+    setOpen(true);
+    if (details.empNumberPk)
+    setRowDetails(details);
+  };
+  const handleClose = () => {
+    setOpen(false);
+    setRowDetails({});
+  };
 
   useEffect(() => {
-      GetEmployees(page).then(function (response) {
-        console.log("GetCustomerBookingInfo", response.bookingInfo);
-        setEmployeeDetails(response);
-      })
-        .catch(function (error) {
-          console.log('GetCustomerBookingInfo error', error);
-          setEmployeeDetails([]);
-        });
+    GetEmployees(page).then(function (response) {
+      console.log("GetCustomerBookingInfo", response.bookingInfo);
+      setEmployeeDetails(response);
+    })
+    .catch(function (error) {
+      console.log('GetCustomerBookingInfo error', error);
+      setEmployeeDetails([]);
+    });
   }, [page]);
 
   const handlePageChange = (params) => {
     setPage(params.page);
-  };
-
-  const onAddNewRow = () => {
-    alert('add');
   };
 
   const onSearch = (id) => {
@@ -73,7 +92,7 @@ export const Employee = (props) => {
             <SearchIcon />
           </IconButton>
         </div>
-        <Button onClick={onAddNewRow} color="primary" variant="contained" size="small">
+        <Button onClick={handleClickOpen} color="primary" variant="contained" size="small">
           Add New Employee
         </Button>
       </div>
@@ -85,6 +104,7 @@ export const Employee = (props) => {
           handlePageChange={handlePageChange}
         />
       </div>
+      <AddEdit rowDetails={rowDetails} open={open} handleClose={handleClose}/>
   </div>
   );
 }
