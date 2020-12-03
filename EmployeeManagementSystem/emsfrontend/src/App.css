@@ -37,6 +37,10 @@
 .MuiDataGrid-root .MuiDataGrid-window {
   overflow-x: hidden !important;
 }
+.gridOperations {
+  display: flex;
+  justify-content: space-between;
+}
 
 @keyframes App-logo-spin {
   from {
