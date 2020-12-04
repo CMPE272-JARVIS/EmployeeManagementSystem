@@ -8,6 +8,7 @@ import GetEmployees from './GetEmployees';
 import CommonGrid from '../CommonGrid';
 import AddEdit from './AddEdit';
 import editIcon from '@material-ui/icons/Edit';
+import SearchEmployee from './SearchEmployee';
 
 export const Employee = (props) => {
   const columns = [
@@ -57,6 +58,10 @@ export const Employee = (props) => {
   };
 
   useEffect(() => {
+    getEmployeeList(page);
+  }, [page]);
+
+  const getEmployeeList = (page) => {
     GetEmployees(page).then(function (response) {
       console.log("GetCustomerBookingInfo", response.bookingInfo);
       setEmployeeDetails(response);
@@ -65,14 +70,24 @@ export const Employee = (props) => {
         console.log('GetCustomerBookingInfo error', error);
         setEmployeeDetails([]);
       });
-  }, [page]);
-
+  }
   const handlePageChange = (params) => {
     setPage(params.page);
   };
 
   const onSearch = (id) => {
-    alert("search" + id);
+    if(id !== '') {
+      SearchEmployee(id).then(function (response) {
+        console.log("SearchEmployee", response.bookingInfo);
+        setEmployeeDetails(response);
+      })
+      .catch(function (error) {
+        console.log('SearchEmployee error', error);
+        setEmployeeDetails([]);
+      });
+    } else {
+      getEmployeeList(1);
+    }
   };
 
   return (
