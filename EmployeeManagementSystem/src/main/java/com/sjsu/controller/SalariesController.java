@@ -35,9 +35,10 @@ public class SalariesController {
   }
 
   @GetMapping("/getSalariesPage")
-  public ResponseEntity<List<Salaries>> getAllSalaries(@RequestParam(defaultValue = "0") Integer pageNo,
-      @RequestParam(defaultValue = "15") Integer pageSize, @RequestParam(defaultValue = "empNumberFk") String sortBy) {
-    List<Salaries> list = salService.getAllSalaries(pageNo, pageSize, sortBy);
+  public ResponseEntity<List<Salaries>> getSalariesPage(@RequestParam(defaultValue = "0") Integer pageNo,
+      @RequestParam(defaultValue = "15") Integer pageSize) {// }, @RequestParam(defaultValue = "empNumberFk") String
+                                                            // sortBy) {
+    List<Salaries> list = salService.getAllSalaries(pageNo, pageSize);
 
     return new ResponseEntity<List<Salaries>>(list, new HttpHeaders(), HttpStatus.OK);
   }

@@ -30,9 +30,9 @@ public class SalariesService {
     return sal;
   }
 
-  public List<Salaries> getAllSalaries(Integer pageNo, Integer pageSize, String sortBy) {
+  public List<Salaries> getAllSalaries(Integer pageNo, Integer pageSize) {
 
-    Pageable paging = PageRequest.of(pageNo, pageSize, Sort.by(sortBy));
+    Pageable paging = PageRequest.of(pageNo, pageSize);// , Sort.by(sortBy));
 
     Page<Salaries> pagedResult = repo.findAll(paging);
 
