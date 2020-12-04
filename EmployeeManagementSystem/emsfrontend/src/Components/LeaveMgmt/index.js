@@ -18,6 +18,7 @@ import {
 import DateFnsUtils from '@date-io/date-fns';
 import PutLeaveDetails from './PutLeaveDetails';
 import GetEmpManager from './GetEmpManager';
+import Moment from 'moment';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -55,7 +56,8 @@ const LeaveMgmt = () => {
       leaveData.emp_no = '10001'; //get the emp id from session storage details
       GetEmpManager(leaveData.emp_no).then(function (response) {
         console.log('get manager details', response)
-        leaveData.start_date = startDate;
+
+        leaveData.start_date = Moment(startDate).format('YYYY-MM-DD');
         leaveData.total_days = dayCt;
         leaveData.reason = reason;
         leaveData.mgr = response[0].emp_no;
