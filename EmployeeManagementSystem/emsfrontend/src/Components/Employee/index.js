@@ -41,6 +41,7 @@ export const Employee = (props) => {
   ];
 
   const [employeeDetails, setEmployeeDetails] = React.useState([]);
+
   const [page, setPage] = React.useState(1);
   const [empId, setEmpId] = React.useState("");
   const [open, setOpen] = React.useState(false);
@@ -58,7 +59,7 @@ export const Employee = (props) => {
   };
 
   useEffect(() => {
-    getEmployeeList(page);
+    getEmployeeList(page - 1);
   }, [page]);
 
   const getEmployeeList = (page) => {
@@ -76,17 +77,17 @@ export const Employee = (props) => {
   };
 
   const onSearch = (id) => {
-    if(id !== '') {
+    if (id !== '') {
       SearchEmployee(id).then(function (response) {
         console.log("SearchEmployee", response.bookingInfo);
         setEmployeeDetails(response);
       })
-      .catch(function (error) {
-        console.log('SearchEmployee error', error);
-        setEmployeeDetails([]);
-      });
+        .catch(function (error) {
+          console.log('SearchEmployee error', error);
+          setEmployeeDetails([]);
+        });
     } else {
-      getEmployeeList(1);
+      getEmployeeList(0);
     }
   };
 
