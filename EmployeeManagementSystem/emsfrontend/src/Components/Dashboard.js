@@ -21,6 +21,7 @@ import Home from './Home';
 import HR from './HR';
 import Manager from './Manager';
 import EmpSalaries from './EmpSalaries';
+import LeaveMgmt from './LeaveMgmt';
 
 const drawerWidth = 240;
 
@@ -154,6 +155,7 @@ export default function Dashboard() {
           <Route exact path="/employee" component={() => <Employee />} />
           <Route exact path="/salaries" component={() => <EmpSalaries />} />
           <Route exact path="/salaryById/:empid" component={() => <EmpSalaries />} />
+          <Route exact path="/leave" component={() => <LeaveMgmt />} />
           {/* <Route exact path="/department" component={() => <Department />} />
           <Route exact path="/salary" component={() => <Salary />} />
           <Route exact path="/profile" component={() => <Profile />} />

@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
@@ -47,19 +47,19 @@ export const AddEdit = (props) => {
       alert("Employee Added Successfully");
       // setEmployeeDetails(response);
     })
-    .catch(function (error) {
-      // console.log('GetCustomerBookingInfo error', error);
-      // setEmployeeDetails([]);
-    });
+      .catch(function (error) {
+        // console.log('GetCustomerBookingInfo error', error);
+        // setEmployeeDetails([]);
+      });
   };
 
   return (
     <div>
       <Dialog open={props.open} onClose={props.handleClose} aria-labelledby="form-dialog-title">
-      {Object.keys(props.rowDetails).length === 0 ? 
-        <DialogTitle id="form-dialog-title">Add Employee</DialogTitle> :
-        <DialogTitle id="form-dialog-title">Edit Employee</DialogTitle>
-      }
+        {Object.keys(props.rowDetails).length === 0 ?
+          <DialogTitle id="form-dialog-title">Add Employee</DialogTitle> :
+          <DialogTitle id="form-dialog-title">Edit Employee</DialogTitle>
+        }
         <DialogContent>
           <TextField
             autoFocus
@@ -73,23 +73,23 @@ export const AddEdit = (props) => {
           />
           {/* Date Input Field */}
           <MuiPickersUtilsProvider utils={DateFnsUtils}>
-              <KeyboardDatePicker
-                  disableToolbar
-                  variant='inline'
-                  format='MM/dd/yyyy'
-                  margin='normal'
-                  label='Select Date Of Birth'
-                  value={birthDate}
-                  onChange={(e, date) => setBirthDate(date)}
-                  KeyboardButtonProps={{
-                      'aria-label': 'change date'
-                  }}
-                  InputLabelProps={{
-                      style: { color: '#7c7979', fontSize: '1.2em' },
-                      shrink: true
-                  }}
-                  style={{ marginTop: '30px', width: '100%' }}
-              />
+            <KeyboardDatePicker
+              disableToolbar
+              variant='inline'
+              format='MM/dd/yyyy'
+              margin='normal'
+              label='Select Date Of Birth'
+              value={birthDate}
+              onChange={(e, date) => setBirthDate(date)}
+              KeyboardButtonProps={{
+                'aria-label': 'change date'
+              }}
+              InputLabelProps={{
+                style: { color: '#7c7979', fontSize: '1.2em' },
+                shrink: true
+              }}
+              style={{ marginTop: '30px', width: '100%' }}
+            />
           </MuiPickersUtilsProvider>
           <TextField
             autoFocus
@@ -123,24 +123,24 @@ export const AddEdit = (props) => {
           />
           {/* Date Input Field */}
           <MuiPickersUtilsProvider utils={DateFnsUtils}>
-              <KeyboardDatePicker
-                  disableToolbar
-                  variant='inline'
-                  // formatDate={(date) => moment(date).format('DD-MM-YYYY')}
-                  format='MM/dd/yyyy'
-                  margin='normal'
-                  label='Select Hire Date'
-                  value={hireDate}
-                  onChange={(e, date) => setHireDate(date)}
-                  KeyboardButtonProps={{
-                      'aria-label': 'change date'
-                  }}
-                  InputLabelProps={{
-                      style: { color: '#7c7979', fontSize: '1.2em' },
-                      shrink: true
-                  }}
-                  style={{ marginTop: '30px', width: '100%' }}
-              />
+            <KeyboardDatePicker
+              disableToolbar
+              variant='inline'
+              // formatDate={(date) => moment(date).format('DD-MM-YYYY')}
+              format='MM/dd/yyyy'
+              margin='normal'
+              label='Select Hire Date'
+              value={hireDate}
+              onChange={(e, date) => setHireDate(date)}
+              KeyboardButtonProps={{
+                'aria-label': 'change date'
+              }}
+              InputLabelProps={{
+                style: { color: '#7c7979', fontSize: '1.2em' },
+                shrink: true
+              }}
+              style={{ marginTop: '30px', width: '100%' }}
+            />
           </MuiPickersUtilsProvider>
         </DialogContent>
         <DialogActions>
@@ -150,8 +150,8 @@ export const AddEdit = (props) => {
           {Object.keys(props.rowDetails).length === 0 ? <Button onClick={onAddEditNewRow} color="primary" variant="contained">
             Add
           </Button> :
-          <Button onClick={onAddEditNewRow} color="primary" variant="contained">
-            Edit
+            <Button onClick={onAddEditNewRow} color="primary" variant="contained">
+              Edit
           </Button>}
         </DialogActions>
       </Dialog>
