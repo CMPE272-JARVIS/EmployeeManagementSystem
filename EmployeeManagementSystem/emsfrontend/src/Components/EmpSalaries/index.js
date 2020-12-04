@@ -2,32 +2,38 @@ import React, { useEffect } from 'react';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import SearchIcon from '@material-ui/icons/Search';
-import IconButton from '@material-ui/core/IconButton';
-
 import GetEmpSalaries from './GetEmpSalaries';
 import CommonGrid from '../CommonGrid';
+
+import { XGrid } from '@material-ui/x-grid';
+
 // import AddEdit from './AddEdit';
 
 export const EmpSalaries = (props) => {
   const columns = [
     {
+      field: 'id',
+      headerName: 'Record ID',
+      width: 120,
+    },
+    {
       field: 'empNumberFk',
-      headerName: 'Employee Number',
+      headerName: 'Employee ID',
       width: 180,
     },
     { field: 'salary', headerName: 'Salary', width: 120 },
-    { field: 'fromDate', headerName: 'From Date', width: 120 },
+    { field: 'fromdate', headerName: 'From Date', width: 120 },
     { field: 'toDate', headerName: 'To Date', width: 120 },
-    {
-      field: 'edit',
-      headerName: 'Edit',
-      width: 150,
-      renderCell: (params) => (
-        <Button color="primary" variant="contained" size="small" onClick={() => handleClickOpen(params.row)}>
-          Edit
-        </Button>
-      ),
-    },
+    // {
+    //   field: 'edit',
+    //   headerName: 'Edit',
+    //   width: 150,
+    //   renderCell: (params) => (
+    //     <Button color="primary" variant="contained" size="small" onClick={() => handleClickOpen(params.row)}>
+    //       Edit
+    //     </Button>
+    //   ),
+    // },
   ];
 
   const [salaryDetails, setSalaryDetails] = React.useState([]);
@@ -37,23 +43,23 @@ export const EmpSalaries = (props) => {
 
   const [rowDetails, setRowDetails] = React.useState({});
 
-  const handleClickOpen = (details) => {
-    setOpen(true);
-    if (details.empNumberPk)
-      setRowDetails(details);
-  };
-  const handleClose = () => {
-    setOpen(false);
-    setRowDetails({});
-  };
+  // const handleClickOpen = (details) => {
+  //   setOpen(true);
+  //   if (details.empNumberFk)
+  //     setRowDetails(details);
+  // };
+  // const handleClose = () => {
+  //   setOpen(false);
+  //   setRowDetails({});
+  // };
 
   useEffect(() => {
-    GetEmpSalaries(page).then(function (response) {
-      console.log("GetCustomerBookingInfo", response.bookingInfo);
+    GetEmpSalaries(1).then(function (response) {
+      console.log('Get employee salaries', response.salaryDetails);
       setSalaryDetails(response);
     })
       .catch(function (error) {
-        console.log('GetCustomerBookingInfo error', error);
+        console.log('Get employee salaries', error);
         setSalaryDetails([]);
       });
   }, [page]);
@@ -70,7 +76,7 @@ export const EmpSalaries = (props) => {
     <div className="mainContainerWrap">
       <div className="gridOperations">
         <div>
-          <TextField
+          {/* <TextField
             label='Seach Employee'
             // className={classes.textField}
             value={empId}
@@ -79,14 +85,14 @@ export const EmpSalaries = (props) => {
               style: { color: '#7c7979', fontSize: '1.2em' },
               shrink: true
             }}
-          />
-          <IconButton color="primary" aria-label="upload picture" component="span" onClick={() => onSearch(empId)}>
+          /> */}
+          {/* <IconButton color="primary" aria-label="upload picture" component="span" onClick={() => onSearch(empId)}>
             <SearchIcon />
-          </IconButton>
+          </IconButton> */}
         </div>
-        <Button onClick={handleClickOpen} color="primary" variant="contained" size="small">
+        {/* <Button onClick={handleClickOpen} color="primary" variant="contained" size="small">
           Add New Employee
-        </Button>
+        </Button> */}
       </div>
 
       <div style={{ height: 400, width: '100%', marginTop: '30px' }}>

@@ -152,7 +152,8 @@ export default function Dashboard() {
         <main className={classes.content}>
           <Route exact path="/" component={() => <Home />} />
           <Route exact path="/employee" component={() => <Employee />} />
-          <Route exact path="/salayById/:empid" component={() => <EmpSalaries />} />
+          <Route exact path="/salaries" component={() => <EmpSalaries />} />
+          <Route exact path="/salaryById/:empid" component={() => <EmpSalaries />} />
           {/* <Route exact path="/department" component={() => <Department />} />
           <Route exact path="/salary" component={() => <Salary />} />
           <Route exact path="/profile" component={() => <Profile />} />

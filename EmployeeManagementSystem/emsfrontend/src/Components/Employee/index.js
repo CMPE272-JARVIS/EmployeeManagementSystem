@@ -7,6 +7,7 @@ import IconButton from '@material-ui/core/IconButton';
 import GetEmployees from './GetEmployees';
 import CommonGrid from '../CommonGrid';
 import AddEdit from './AddEdit';
+import editIcon from '@material-ui/icons/Edit';
 
 export const Employee = (props) => {
   const columns = [
@@ -33,16 +34,6 @@ export const Employee = (props) => {
       renderCell: (params) => (
         <Button color="primary" variant="contained" size="small" onClick={() => handleClickOpen(params.row)}>
           Edit
-        </Button>
-      ),
-    },
-    {
-      field: 'salaryDetails',
-      headerName: 'Salary Details',
-      width: 150,
-      renderCell: (params) => (
-        <Button color="primary" variant="contained" size="small" onClick={() => handleClickOpen(params.row)}>
-          View Salary Details
         </Button>
       ),
     },

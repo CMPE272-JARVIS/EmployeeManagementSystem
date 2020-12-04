@@ -39,7 +39,7 @@ export const mainListItems = (
         <ListItemText primary="Department" />
       </ListItem>
     </Link>
-    <Link to="/salary" style={{ textDecoration: 'none', display: 'block', color: "inherit" }} >
+    <Link to="/salaries" style={{ textDecoration: 'none', display: 'block', color: "inherit" }} >
       <ListItem button>
         <ListItemIcon>
           <PersonIcon />
