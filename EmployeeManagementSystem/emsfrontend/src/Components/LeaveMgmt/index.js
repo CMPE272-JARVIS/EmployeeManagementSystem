@@ -58,8 +58,8 @@ const LeaveMgmt = () => {
         leaveData.start_date = startDate;
         leaveData.total_days = dayCt;
         leaveData.reason = reason;
-        leaveData.mgr = response.emp_no;
-        leaveData.dept_no = response.dept_no;
+        leaveData.mgr = response[0].emp_no;
+        leaveData.dept_no = response[0].dept_no;
         PutLeaveDetails(leaveData).then(function (response1) {
           console.log('Put leave details', response1)
         }).catch(function (err) {
@@ -118,7 +118,6 @@ const LeaveMgmt = () => {
             </Grid>
           </Grid>
           <Button
-            type='submit'
             fullWidth
             variant='contained'
             color='primary'
