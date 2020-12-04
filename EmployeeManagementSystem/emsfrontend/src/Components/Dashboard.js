@@ -152,7 +152,7 @@ export default function Dashboard() {
         </Drawer>
 
         <main className={classes.content}>
-          <Route exact path="/" component={() => <Home />} />
+          <Route exact path="/" component={() => <Employee />} />
           <Route exact path="/employee" component={() => <Employee />} />
           <Route exact path="/salaries" component={() => <EmpSalaries />} />
           <Route exact path="/salaryById/:empid" component={() => <EmpSalaries />} />

@@ -10,8 +10,10 @@ import {
   MuiPickersUtilsProvider
 } from '@material-ui/pickers';
 import DateFnsUtils from '@date-io/date-fns';
+import Moment from 'moment';
 
 import AddEmployee from './AddEmployee';
+import EditEmployee from './EditEmployee';
 
 export const AddEdit = (props) => {
 
@@ -31,26 +33,37 @@ export const AddEdit = (props) => {
     setHireDate(props.rowDetails.hireDate);
   }, [props.rowDetails]);
 
-  const onAddEditNewRow = () => {
-    alert('add');
+  const onAddEditNewRow = (action) => {
     const newEmployee = {
       empNumberPk,
-      birthDate,
+      birthDate: Moment(birthDate).format('YYYY-MM-DD'),
       firstName,
       lastName,
       gender,
-      hireDate
+      hireDate: Moment(hireDate).format('YYYY-MM-DD')
     }
-    // const newEmployee = {};
-    AddEmployee(newEmployee).then(function (response) {
-      console.log("AddEmployee", response);
-      alert("Employee Added Successfully");
-      // setEmployeeDetails(response);
-    })
+    if (action === 'Add') {
+      AddEmployee(newEmployee).then(function (response) {
+        console.log("AddEmployee", response);
+        alert("Employee Details Added Successfully");
+        props.handleClose();
+        // setEmployeeDetails(response);
+      })
       .catch(function (error) {
-        // console.log('GetCustomerBookingInfo error', error);
-        // setEmployeeDetails([]);
+        props.handleClose();
       });
+    } else {
+      EditEmployee(newEmployee).then(function (response) {
+        console.log("EditEmployee", response);
+        alert("Employee Details Edited Successfully");
+        props.handleClose();
+        // setEmployeeDetails(response);
+      })
+      .catch(function (error) {
+        props.handleClose();
+      });
+    }
+    
   };
 
   return (
@@ -147,7 +160,7 @@ export const AddEdit = (props) => {
           <Button onClick={props.handleClose} color="primary">
             Cancel
           </Button>
-          {Object.keys(props.rowDetails).length === 0 ? <Button onClick={onAddEditNewRow} color="primary" variant="contained">
+          {Object.keys(props.rowDetails).length === 0 ? <Button onClick={() => onAddEditNewRow('Add')} color="primary" variant="contained">
             Add
           </Button> :
             <Button onClick={onAddEditNewRow} color="primary" variant="contained">

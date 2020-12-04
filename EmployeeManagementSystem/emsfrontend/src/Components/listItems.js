@@ -15,14 +15,14 @@ import { Link } from "react-router-dom";
 
 export const mainListItems = (
   <div>
-    <Link to="/" style={{ textDecoration: 'none', display: 'block', color: "inherit" }} >
+    {/* <Link to="/" style={{ textDecoration: 'none', display: 'block', color: "inherit" }} >
       <ListItem button>
         <ListItemIcon>
           <DashboardIcon />
         </ListItemIcon>
         <ListItemText primary="Dashboard" />
       </ListItem>
-    </Link>
+    </Link> */}
     <Link to="/employee" style={{ textDecoration: 'none', display: 'block', color: "inherit" }} >
       <ListItem button>
         <ListItemIcon>

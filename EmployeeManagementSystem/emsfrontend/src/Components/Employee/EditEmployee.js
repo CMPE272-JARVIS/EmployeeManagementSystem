@@ -1,8 +1,8 @@
 import axios from "axios";
 
-export const AddEmployee = (event) => {
+export const EditEmployee = (event) => {
     return new Promise((resolve, reject) => {
-      axios.put("https://ufa5fx3bm2.execute-api.us-east-1.amazonaws.com/dev/addemployeedetails" , event)
+      axios.put("https://q3ouw7h8yk.execute-api.us-east-1.amazonaws.com/dev/updateemployeedetails" , event)
       .then(function (response) {
         resolve(response);
       })
@@ -12,4 +12,4 @@ export const AddEmployee = (event) => {
     });
 };
 
-export default AddEmployee;
+export default EditEmployee;
