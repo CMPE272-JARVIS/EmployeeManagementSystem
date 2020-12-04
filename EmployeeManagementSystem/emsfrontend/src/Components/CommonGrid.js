@@ -3,7 +3,7 @@ import { DataGrid } from '@material-ui/data-grid';
 
 export const CommonGrid = (props) => {
   const columns = props.columns;
-
+  const rowCount = props.rowCount ? props.rowCount : 100000;
   return (
     <div style={{ height: 400, width: '100%', marginTop: '30px' }}>
       <DataGrid
@@ -11,7 +11,7 @@ export const CommonGrid = (props) => {
         columns={columns}
         pageSize={15}
         pagination
-        rowCount={10000}
+        rowCount={rowCount}
         paginationMode="server"
         onPageChange={props.handlePageChange}
       />
