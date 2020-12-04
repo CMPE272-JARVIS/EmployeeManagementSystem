@@ -17,6 +17,7 @@ import {
 } from '@material-ui/pickers';
 import DateFnsUtils from '@date-io/date-fns';
 import PutLeaveDetails from './PutLeaveDetails';
+import GetEmpManager from './GetEmpManager';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -52,76 +53,84 @@ const LeaveMgmt = () => {
     else {
       const leaveData = {}
       leaveData.emp_no = '10001'; //get the emp id from session storage details
-      leaveData.start_date = startDate;
-      leaveData.total_days = dayCt;
-      leaveData.reason = reason;
-      PutLeaveDetails(leaveData).then(function (response) {
-        console.log('Put leave details', response);
+      GetEmpManager(leaveData.emp_no).then(function (response) {
+        console.log('get manager details', response)
+        leaveData.start_date = startDate;
+        leaveData.total_days = dayCt;
+        leaveData.reason = reason;
+        leaveData.mgr = response.emp_no;
+        leaveData.dept_no = response.dept_no;
+        PutLeaveDetails(leaveData).then(function (response1) {
+          console.log('Put leave details', response1)
+        }).catch(function (err) {
+          console.log(err)
+        })
       }).catch(function (err) {
         console.log(err)
       })
     }
-
-    return (
-      <Container component='main' maxWidth='xs'>
-        <CssBaseline />
-        <div className={classes.paper}>
-          <Typography component='h1' variant='h5'>
-            Apply for leave
-          </Typography>
-          <form className={classes.form} noValidate>
-            <Grid container spacing={2}>
-              <Grid item xs={12} sm={6}>
-                <MuiPickersUtilsProvider utils={DateFnsUtils}>
-                  <KeyboardDatePicker
-                    disablePast='false'
-                    disableToolbar
-                    variant='inline'
-                    format='MM/dd/yyyy'
-                    margin='normal'
-                    label='Select Start Date'
-                    value={startDate}
-                    onChange={(e, startDate) => setStartDate(e.target.value)}
-                  />
-                </MuiPickersUtilsProvider>
-              </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  variant='outlined'
-                  required
-                  fullWidth
-                  id='NoOfDays'
-                  label='Number of Days'
-                  name='LeaveDayCount'
-                  onChange={(e, dayCt) => setDayCt(e.target.value)}
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  variant='outlined'
-                  required
-                  fullWidth
-                  id='msg'
-                  label='Reason'
-                  name='msg'
-                  onChange={(e, reason) => setReason(e.target.value)}
-                />
-              </Grid>
-            </Grid>
-            <Button
-              type='submit'
-              fullWidth
-              variant='contained'
-              color='primary'
-              className={classes.submit}
-              onClick={handleSubmit}
-            >
-              Submit
-          </Button>
-          </form>
-        </div>
-      </Container>
-    );
   }
+
+  return (
+    <Container component='main' maxWidth='xs'>
+      <CssBaseline />
+      <div className={classes.paper}>
+        <Typography component='h1' variant='h5'>
+          Apply for leave
+          </Typography>
+        <form className={classes.form} noValidate>
+          <Grid container spacing={2}>
+            <Grid item xs={12} sm={6}>
+              <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                <KeyboardDatePicker
+                  disablePast='false'
+                  disableToolbar
+                  variant='inline'
+                  format='MM/dd/yyyy'
+                  margin='normal'
+                  label='Select Start Date'
+                  value={startDate}
+                  onChange={(e, date) => setStartDate(date)}
+                />
+              </MuiPickersUtilsProvider>
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                variant='outlined'
+                required
+                fullWidth
+                id='NoOfDays'
+                label='Number of Days'
+                name='LeaveDayCount'
+                onChange={(e, dayCt) => setDayCt(e.target.value)}
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                variant='outlined'
+                required
+                fullWidth
+                id='msg'
+                label='Reason'
+                name='msg'
+                onChange={(e, reason) => setReason(e.target.value)}
+              />
+            </Grid>
+          </Grid>
+          <Button
+            type='submit'
+            fullWidth
+            variant='contained'
+            color='primary'
+            className={classes.submit}
+            onClick={handleSubmit}
+          >
+            Submit
+          </Button>
+        </form>
+      </div>
+    </Container>
+  );
 }
+
 export default LeaveMgmt;
