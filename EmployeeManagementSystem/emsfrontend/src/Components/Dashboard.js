@@ -13,8 +13,9 @@ import Badge from '@material-ui/core/Badge';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import NotificationsIcon from '@material-ui/icons/Notifications';
-import { mainListItems } from './listItems';
+import { mainListItems, employeeList } from './listItems';
 import { Route, BrowserRouter as Router } from 'react-router-dom';
+import SignIn from './SignIn';
 
 import Employee from './Employee';
 import Home from './Home';
@@ -102,13 +103,17 @@ const useStyles = makeStyles((theme) => ({
 export default function Dashboard() {
   const classes = useStyles();
   const [open, setOpen] = React.useState(true);
+  const [role, setRole] = React.useState("");
   const handleDrawerOpen = () => {
     setOpen(true);
   };
   const handleDrawerClose = () => {
     setOpen(false);
   };
-
+  // const role = sessionStorage.getItem("key");
+  const getRole = (role) => {
+    setRole(role);
+  }
   return (
     <Router>
       <div className={classes.root}>
@@ -147,12 +152,14 @@ export default function Dashboard() {
             </IconButton>
           </div>
           <Divider />
-          <List>{mainListItems}</List>
+          {role === 'hr' ? <List>{mainListItems}</List> : 
+          <List>{employeeList}</List>
+          }
           <Divider />
         </Drawer>
 
         <main className={classes.content}>
-          <Route exact path="/" component={() => <Employee />} />
+          <Route exact path="/" component={() => <SignIn getRole={getRole}/>} />
           <Route exact path="/employee" component={() => <Employee />} />
           <Route exact path="/salaries" component={() => <EmpSalaries />} />
           <Route exact path="/salaryById/:empid" component={() => <EmpSalaries />} />

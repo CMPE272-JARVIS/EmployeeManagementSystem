@@ -73,3 +73,49 @@ export const mainListItems = (
     </Link>
   </div>
 );
+
+export const employeeList = (
+  <div>
+    {/* <Link to="/" style={{ textDecoration: 'none', display: 'block', color: "inherit" }} >
+      <ListItem button>
+        <ListItemIcon>
+          <DashboardIcon />
+        </ListItemIcon>
+        <ListItemText primary="Dashboard" />
+      </ListItem>
+    </Link> */}
+    <Link to="/employee" style={{ textDecoration: 'none', display: 'block', color: "inherit" }} >
+      <ListItem button>
+        <ListItemIcon>
+          <PeopleIcon />
+        </ListItemIcon>
+        <ListItemText primary="View Employee" />
+      </ListItem>
+    </Link>
+    <Link to="/department" style={{ textDecoration: 'none', display: 'block', color: "inherit" }} >
+      <ListItem button>
+        <ListItemIcon>
+          <LayersIcon />
+        </ListItemIcon>
+        <ListItemText primary="Department" />
+      </ListItem>
+    </Link>
+    <Link to="/leave" style={{ textDecoration: 'none', display: 'block', color: "inherit" }} >
+      <ListItem button>
+        <ListItemIcon>
+          <PersonIcon />
+        </ListItemIcon>
+        <ListItemText primary="Leave" />
+      </ListItem>
+    </Link>
+    <Link to="/logout" style={{ textDecoration: 'none', display: 'block', color: "inherit" }} >
+      <ListItem button>
+        <ListItemIcon>
+          <PersonIcon />
+        </ListItemIcon>
+        <ListItemText primary="Logout" />
+      </ListItem>
+    </Link>
+  </div>
+);
+
