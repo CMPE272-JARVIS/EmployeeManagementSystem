@@ -63,7 +63,7 @@ export const mainListItems = (
         <ListItemText primary="Leave" />
       </ListItem>
     </Link>
-    <Link to="/logout" style={{ textDecoration: 'none', display: 'block', color: "inherit" }} >
+    <Link to="/" style={{ textDecoration: 'none', display: 'block', color: "inherit" }} >
       <ListItem button>
         <ListItemIcon>
           <PersonIcon />
@@ -108,7 +108,7 @@ export const employeeList = (
         <ListItemText primary="Leave" />
       </ListItem>
     </Link>
-    <Link to="/logout" style={{ textDecoration: 'none', display: 'block', color: "inherit" }} >
+    <Link to="/" style={{ textDecoration: 'none', display: 'block', color: "inherit" }} >
       <ListItem button>
         <ListItemIcon>
           <PersonIcon />
