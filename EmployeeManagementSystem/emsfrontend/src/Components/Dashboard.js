@@ -103,7 +103,7 @@ const useStyles = makeStyles((theme) => ({
 export default function Dashboard() {
   const classes = useStyles();
   const [open, setOpen] = React.useState(true);
-  const [role, setRole] = React.useState("");
+  const [role, setRole] = React.useState("hr");
   const handleDrawerOpen = () => {
     setOpen(true);
   };
@@ -159,7 +159,7 @@ export default function Dashboard() {
         </Drawer>
 
         <main className={classes.content}>
-          <Route exact path="/" component={() => <SignIn getRole={getRole}/>} />
+          <Route exact path="/" component={() => <Employee />} />
           <Route exact path="/employee" component={() => <Employee />} />
           <Route exact path="/salaries" component={() => <EmpSalaries />} />
           <Route exact path="/salaryById/:empid" component={() => <EmpSalaries />} />
