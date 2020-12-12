@@ -11,6 +11,7 @@ import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import Snackbar from '@material-ui/core/Snackbar';
 import {
   KeyboardDatePicker,
   MuiPickersUtilsProvider
@@ -19,6 +20,7 @@ import DateFnsUtils from '@date-io/date-fns';
 import PutLeaveDetails from './PutLeaveDetails';
 import GetEmpManager from './GetEmpManager';
 import Moment from 'moment';
+import MuiAlert from '@material-ui/lab/Alert';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -41,11 +43,19 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const Alert = (props) => {
+  return <MuiAlert elevation={6} variant='filled' {...props} />;
+}
+
 const LeaveMgmt = () => {
   const classes = useStyles();
   const [startDate, setStartDate] = React.useState(new Date());
   const [dayCt, setDayCt] = React.useState(0);
   const [reason, setReason] = React.useState('');
+  const [open, setOpen] = React.useState(false);
+  const [errorOpen, setErrorOpen] = React.useState(false);
+  const [confirmMessage, setConfirmMessage] = React.useState('');
+  const [errorMessage, setErrorMessage] = React.useState('');
 
   const handleSubmit = () => {
     if (startDate == null) {
@@ -64,7 +74,9 @@ const LeaveMgmt = () => {
         leaveData.dept_no = response[0].dept_no;
         PutLeaveDetails(leaveData).then(function (response1) {
           console.log('Put leave details', response1)
+          setConfirmMessage('Leave application submitted successfully !');
         }).catch(function (err) {
+          setErrorMessage('Unable to submit leave application');
           console.log(err)
         })
       }).catch(function (err) {
@@ -73,6 +85,19 @@ const LeaveMgmt = () => {
     }
   }
 
+  const handleClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+    setOpen(false);
+  };
+  const handleErrorClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+    setErrorOpen(false);
+  };
+
   return (
     <Container component='main' maxWidth='xs'>
       <CssBaseline />
@@ -80,6 +105,16 @@ const LeaveMgmt = () => {
         <Typography component='h1' variant='h5'>
           Apply for leave
           </Typography>
+        <Snackbar open={open} autoHideDuration={60000} onClose={handleClose}>
+          <Alert onClose={handleClose} severity='success'>
+            {confirmMessage}
+          </Alert>
+        </Snackbar>
+        <Snackbar open={errorOpen} autoHideDuration={60000} onClose={handleErrorClose}>
+          <Alert onClose={handleErrorClose} severity='error'>
+            {errorMessage}
+          </Alert>
+        </Snackbar>
         <form className={classes.form} noValidate>
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6}>
